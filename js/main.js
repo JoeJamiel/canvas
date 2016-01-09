@@ -1,0 +1,3 @@
+function Fn (argument) {
+	// body...
+}
