@@ -11,6 +11,7 @@
 		<canvas id="game" width="800" height="500"></canvas>
 	</div>
 
+<script src="js/box.js"></script>
 <script src="js/main.js"></script>
 </body>
 </html>
