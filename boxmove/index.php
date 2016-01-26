@@ -30,32 +30,46 @@ var box = {
 	y : 50
 };
 
-var bullets = {
-	
+var bullets = [];
 
-
+function Bullet (x,y) {
+	this.x = x;
+	this.y = y;
+	this.w = 10;
+	this.h = 10;
+	this.speed = 10;
 }
 
 $(document).on('keydown',function(e){
 	console.log(e.keyCode);
 
 	if(e.keyCode == 37){
-		box.x -= box.w/16;
+		box.x -= 5;
 	}
 	if(e.keyCode == 38){
-		box.y -= box.h/16;
+		box.y -= 5;
 	}
 	if(e.keyCode == 39){
-		box.x += box.w/16;
+		box.x += 5;
 	}
 	if(e.keyCode == 40){
-		box.y += box.h/16;
+		box.y += 5;
+	}
+
+	if(e.keyCode == 32){
+		bullets.push(new Bullet(box.x, box.y + (box.h / 2)));
 	}
 })
 
 setInterval(function () {
 	ctx.clearRect(0,0,canvas.width,canvas.height);
 	ctx.fillRect(box.x,box.y,box.w,box.h);
+
+	for(var i = 0; i < bullets.length; i++){
+		var b = bullets[i];
+		ctx.fillRect(b.x, b.y, b.w, b.h);
+		b.x += b.speed;
+	}
 }, 1000/20);
 
 
